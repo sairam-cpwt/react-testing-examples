@@ -1,4 +1,9 @@
 import "@testing-library/jest-dom/vitest";
+import { server } from "./mocks/server";
+
+beforeAll(() => server.listen());
+afterEach(() => server.restoreHandlers());
+afterAll(() => server.close());
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
